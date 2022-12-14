@@ -231,6 +231,7 @@ class Analytic_Tasks:
         df = df.join(df_colors, on = 'VEH_COLOR_ID', how = 'inner')
         df = df.join(df_states, on='DRVR_LIC_STATE_ID', how='inner')
         df = df.groupBy('VEH_MAKE_ID').count()
+        df = df.orderBy(col('count').desc())
         df = df.limit(5)
         return df
 
